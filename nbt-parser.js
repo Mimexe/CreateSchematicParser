@@ -698,7 +698,7 @@ class CreateSchematicParser {
     }
 
     const schematic = {
-      version: getVersionName(schematicData.DataVersion) || "Unknown",
+      version: getVersionName(schematicData.DataVersion),
       totalBlocks: schematicData.blocks.length,
       width: schematicData.size[0],
       height: schematicData.size[1],

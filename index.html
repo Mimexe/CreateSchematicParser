@@ -13,11 +13,19 @@
   <body>
     <div class="container">
       <header>
-        <h1>Create Mod Schematic Parser (beta version, bugs may and will surely appear)</h1>
+        <h1>
+          Create Mod Schematic Parser (beta version, bugs may and will surely
+          appear)
+        </h1>
         <p>
           Upload a .nbt schematic file from Minecraft Create mod to analyze its
           blocks and get required mods or minecraft version.
         </p>
+        <div class="header-buttons">
+          <button id="darkModeToggle" class="btn btn-primary">
+            Toggle Dark Mode
+          </button>
+        </div>
       </header>
 
       <main>
@@ -46,6 +54,9 @@
             style="display: none"
           >
             <div class="progress-info">
+              <span style="font-size: 10px"
+                >Progress is not completely reliable</span
+              >
               <h3 id="progressTitle">Processing schematic...</h3>
               <p id="progressStatus">Initializing...</p>
             </div>
@@ -134,6 +145,13 @@
                 <li>No mods detected</li>
               </ul>
             </div>
+
+            <div class="blocks">
+              <h3>Blocks</h3>
+              <ul id="blocksList">
+                <li>No blocks detected</li>
+              </ul>
+            </div>
           </div>
         </section>
       </main>
@@ -149,5 +167,25 @@
     <script src="data.js"></script>
     <script src="nbt-parser.js"></script>
     <script src="script.js"></script>
+    <script>
+      // dark mode
+      const toggleDarkMode = () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem(
+          "darkMode",
+          document.body.classList.contains("dark-mode")
+        );
+      };
+
+      // Load dark mode preference from localStorage
+      const darkMode = localStorage.getItem("darkMode");
+      if (darkMode === "true") {
+        document.body.classList.add("dark-mode");
+      }
+
+      document
+        .getElementById("darkModeToggle")
+        .addEventListener("click", toggleDarkMode);
+    </script>
   </body>
 </html>
