@@ -813,7 +813,7 @@ const MOD_NAME_MAP = {
 };
 
 function getModName(modId) {
-  return MOD_NAME_MAP[modId] || "Unknown Mod (" + modId + ")";
+  return MOD_NAME_MAP[modId] || modId;
 }
 
 if (typeof module !== "undefined" && module.exports) {
