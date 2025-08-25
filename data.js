@@ -1165,7 +1165,8 @@ const MOD_NAME_MAP = {
   "exchangers": "Exchangers",
   "flickerfix": "FlickerFix",
   "merequester": "ME Requester",
-  "potionsmaster": "PotionsMaster"
+  "potionsmaster": "PotionsMaster",
+  "create_dd": "Create: Dreams and Desires"
 };
 
 function getModName(modId) {
