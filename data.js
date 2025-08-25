@@ -1170,6 +1170,8 @@ const MOD_NAME_MAP = {
   merequester: "ME Requester",
   potionsmaster: "PotionsMaster",
   create_dd: "Create: Dreams and Desires",
+  davebuildingmod: "Dave's Building Mod",
+  createindustry: "Create: The Factory Must Grow, the old one?",
 };
 
 function getModName(modId) {
