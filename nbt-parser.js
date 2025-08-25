@@ -663,14 +663,23 @@ class CreateSchematicParser {
     }
 
     const mods = [];
+    const blockCounts = {};
+    const blocks = [];
 
+    // Process palette to get block types and extract mods
     for (const value of schematicData.palette) {
       console.log("[Schematic Parser] Processing palette value:", value);
       if (!value.Name) {
         console.log("[Schematic Parser] Skipping value without Name:", value);
         continue;
       }
-      const namev = value.Name.split(":")[0];
+
+      const blockName = value.Name;
+      const namev = blockName.split(":")[0];
+
+      // Initialize block count
+      blockCounts[blockName] = 0;
+
       if (namev === "minecraft") {
         console.log(
           "[Schematic Parser] Skipping Minecraft default block:",
@@ -686,6 +695,32 @@ class CreateSchematicParser {
       }
       mods.push(name);
       console.log("[Schematic Parser] Added mod to list:", name);
+    }
+
+    // Count blocks from the blocks array
+    if (schematicData.blocks && Array.isArray(schematicData.blocks)) {
+      for (const block of schematicData.blocks) {
+        if (block && typeof block.state !== "undefined") {
+          const paletteIndex = block.state;
+          if (paletteIndex < schematicData.palette.length) {
+            const paletteEntry = schematicData.palette[paletteIndex];
+            if (paletteEntry && paletteEntry.Name) {
+              const blockName = paletteEntry.Name;
+              blockCounts[blockName] = (blockCounts[blockName] || 0) + 1;
+            }
+          }
+        }
+      }
+    }
+
+    // Convert block counts to blocks array for the UI
+    for (const [blockName, count] of Object.entries(blockCounts)) {
+      if (count > 0) {
+        blocks.push({
+          name: blockName,
+          count: count,
+        });
+      }
     }
 
     if (
@@ -704,6 +739,7 @@ class CreateSchematicParser {
       height: schematicData.size[1],
       length: schematicData.size[2],
       mods,
+      blocks,
     };
 
     if (progressCallback) {

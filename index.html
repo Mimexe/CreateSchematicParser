@@ -25,6 +25,16 @@
           <button id="darkModeToggle" class="btn btn-primary">
             Toggle Dark Mode
           </button>
+          <button
+            id="loadLastSchematicMain"
+            class="btn btn-primary"
+            style="display: none"
+          >
+            Load Last Schematic
+          </button>
+          <button id="loadSchematicMain" class="btn btn-primary">
+            Load Schematic
+          </button>
         </div>
       </header>
 
@@ -71,7 +81,45 @@
           <div class="results-header">
             <h2>Parsed Schematic Data</h2>
             <div class="header-actions">
-              <button class="btn-secondary" onclick="location.reload()">
+              <button
+                id="loadLastSchematic"
+                class="btn-secondary"
+                style="display: none"
+              >
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M3 3h18v18H3z"></path>
+                  <path d="M8 12l2 2 4-4"></path>
+                </svg>
+                Load Last Schematic
+              </button>
+              <button
+                id="saveSchematic"
+                class="btn-secondary"
+                style="display: none"
+              >
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                  ></path>
+                  <polyline points="17,21 17,13 7,13 7,21"></polyline>
+                  <polyline points="7,3 7,8 15,8"></polyline>
+                </svg>
+                Save Schematic
+              </button>
+              <button
+                class="btn-secondary"
+                onclick="location.href = '/?noload'"
+              >
                 <svg
                   class="btn-icon"
                   viewBox="0 0 24 24"
@@ -148,17 +196,30 @@
 
             <div class="blocks">
               <h3>Blocks</h3>
-              <ul id="blocksList">
-                <li>No blocks detected</li>
-              </ul>
+              <div id="blocksList" class="blocks-container">
+                <div class="block-item-placeholder">No blocks detected</div>
+              </div>
             </div>
           </div>
         </section>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding-top: 15px;
+          "
+        >
+          <input type="checkbox" name="autoLoad" id="autoLoad" />
+          <label for="autoLoad">Auto-load last schematic</label>
+        </div>
       </main>
 
       <footer>
         <p>
-          Made with love by Mime4X (and AI for CSS and some part of nbt parser)
+          Made with love by Mime4X (and AI for CSS and some part of nbt
+          parser)<br />
+          Version Beta 2 - Added blocks support and save/load feature
         </p>
       </footer>
     </div>
