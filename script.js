@@ -439,3 +439,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.schematicViewer = new SchematicViewer();
 });
+
+// Service Worker Registration
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then((reg) => {
+      console.log("Service Worker registered");
+    })
+    .catch((error) => {
+      console.error("Service Worker registration failed:", error);
+    });
+}
