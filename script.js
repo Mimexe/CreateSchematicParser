@@ -240,8 +240,13 @@ class SchematicViewer {
           isCompleted ? "checked" : ""
         }>
         <div class="block-image-placeholder"></div>
-        <div class="block-name">${this.formatBlockName(name)}</div>
-        <div class="block-count">x${count}</div>
+        <div class="block-info">
+          <div class="block-name">${this.formatBlockName(name)}</div>
+          <div class="block-mod">${getModName(name.split(":")[0])}</div>
+        </div>
+        <div class="block-count-container">
+          <div class="block-count">x${count}</div>
+        </div>
       </div>
     `;
       })

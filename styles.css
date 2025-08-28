@@ -791,6 +791,7 @@ header p {
 }
 
 .block-item {
+  display: flex;
   background: #eaf3fa;
   border-radius: 8px;
   padding: 20px;
@@ -803,11 +804,23 @@ header p {
   box-shadow: 0 4px 20px rgba(44, 62, 80, 0.1);
 }
 
-.block-name {
+.block-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.block-info .block-name {
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
   font-size: 1.1rem;
+}
+
+.block-info .block-mod {
+  font-weight: 500;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .block-details {
@@ -950,6 +963,7 @@ footer {
 .dark-mode .info-label,
 .dark-mode .info-value,
 .dark-mode .block-name,
+.dark-mode .block-mod,
 .dark-mode .progress-header h3,
 .dark-mode .progress-status,
 .dark-mode .progress-sub-status,
@@ -1011,6 +1025,10 @@ footer {
 
 .dark-mode .block-name {
   color: #eaf3fa;
+}
+
+.dark-mode .block-mod {
+  color: #9ca3af;
 }
 
 .dark-mode .block-count {
@@ -1373,12 +1391,26 @@ footer {
   opacity: 0.6;
 }
 
-.block-name {
+.block-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.block-name {
   font-weight: 500;
   color: #234567;
   font-size: 0.95rem;
-  margin-right: 16px;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.block-mod {
+  font-weight: 400;
+  color: #6c7a89;
+  font-size: 0.85rem;
+  line-height: 1.1;
 }
 
 .block-count {
@@ -1389,6 +1421,7 @@ footer {
   padding: 4px 8px;
   border-radius: 12px;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .block-item-placeholder {
