@@ -399,8 +399,7 @@ class NBTParser {
 
     for (let i = 0; i < length; i++) {
       // For complex types, use async reading
-      if (type === 9 || type === 10) {
-        // LIST or COMPOUND
+      if (type === 7 || type === 9 || type === 10 || type === 11 || type === 12) {
         list.push(await this.readPayloadAsync(type));
       } else {
         list.push(this.readPayload(type));
